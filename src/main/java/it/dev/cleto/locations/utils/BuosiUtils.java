@@ -15,7 +15,7 @@ public class BuosiUtils {
     public static final String API_URL_DIRECTION = "https://trueway-directions2.p.rapidapi.com/FindDrivingRoute?optimize=true&avoid_tolls=true&stops=";
     public static final String API_HOST_DIRECTION = "trueway-directions2.p.rapidapi.com";
     public static final String BASE_RESULT_URL = "https://www.google.it/maps/dir/";
-    public static final int LIMIT = 25;
+    public static final int LIMIT = 125;
     public static final String SPACE = " ";
     public static final String COMMA = ",";
     public static final String LOCATION_SEPARATOR = "/";

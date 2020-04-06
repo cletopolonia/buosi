@@ -19,7 +19,7 @@ public class BuosiResults {
 //        if (orders.size() > LIMIT) throw new SizeLimitExceededException();
 //        StringJoiner sb = new StringJoiner(LOCATION_SEPARATOR);
 //        for (BuosiOrder order : orders)
-//            sb.add(order.getPurgeAddress());
+//            sb.add(order.getAddress());
 //        return BASE_RESULT_URL + sb.toString();
 //    }
 
