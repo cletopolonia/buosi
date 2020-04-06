@@ -15,6 +15,14 @@ public class BuosiResults {
     private List<BuosiOrder> orders;
     private String route;
 
+//    public String printLocationsString() throws SizeLimitExceededException {
+//        if (orders.size() > LIMIT) throw new SizeLimitExceededException();
+//        StringJoiner sb = new StringJoiner(LOCATION_SEPARATOR);
+//        for (BuosiOrder order : orders)
+//            sb.add(order.getPurgeAddress());
+//        return BASE_RESULT_URL + sb.toString();
+//    }
+
     public String generateLocationsString() throws SizeLimitExceededException {
         if (orders.size() > LIMIT) throw new SizeLimitExceededException();
         StringJoiner sb = new StringJoiner(URL_SEPARATOR);

@@ -23,7 +23,7 @@ public class FileManager {
         List<BuosiOrder> orders = new ArrayList<>();
         Path pathToFile = Paths.get(inputFileName);
         if (!pathToFile.toFile().exists()) throw new FileNotFoundException(inputFileName);
-        try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.US_ASCII)) {
+        try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.UTF_8)) {
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(CSV_SEPARATOR);

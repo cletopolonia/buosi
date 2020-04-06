@@ -83,8 +83,8 @@ public class Output {
         builder.append(Optional.ofNullable(row.getId()).map(this::toColumn).orElse(empty()));
         builder.append(Optional.ofNullable(row.getName()).map(this::toColumn).orElse(empty()));
         builder.append(Optional.ofNullable(row.getSurname()).map(this::toColumn).orElse(empty()));
-        builder.append(Optional.ofNullable(row.getAddress()).map(this::toColumn).orElse(empty()));
-        builder.append(Optional.ofNullable(row.getCity()).map(this::toColumn).orElse(empty()));
+        builder.append(Optional.ofNullable(row.getCompleteAddress()).map(this::toColumn).orElse(empty()));
+        builder.append(row.getCity());
         return builder.toString();
     }
 

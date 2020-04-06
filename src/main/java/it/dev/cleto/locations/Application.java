@@ -24,7 +24,7 @@ public class Application {
             try {
                 application.calculateRoute(i);
             } catch (Exception e) {
-                log.error(e.getMessage(), e);
+                log.info(e.getMessage(), e);
                 System.exit(1);
             }
         }
@@ -40,6 +40,7 @@ public class Application {
         buosiResults.setOrders(orders);
         // lista degli stops concatenati
         String stops = buosiResults.generateLocationsString();
+//        log.error(buosiResults.printLocationsString());
         // recupero l'ordine degli stop
         List<Integer> stepOrder = invokeApiStopOrder(stops);
         buosiResults.setAllStepOrder(stepOrder);
