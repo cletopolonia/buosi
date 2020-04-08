@@ -37,13 +37,29 @@ public class RapidApiClient {
         Response response;
         try {
             response = doGet(url, API_HOST_DIRECTION);
-            final String responseAsString = response.body().string();
-            DirectionsResponse directionsResponse = Jsonizable.fromJson(responseAsString, DirectionsResponse.class);
-            return directionsResponse.getRoute().getWaypoints_order();
-        } catch (IOException e) {
+            String responseAsString = null;
+            if (response.isSuccessful()) {
+                responseAsString = response.body().string();
+                DirectionsResponse directionsResponse = Jsonizable.fromJson(responseAsString, DirectionsResponse.class);
+                return directionsResponse.getRoute().getWaypoints_order();
+            }
+            else throw new NoRouteAvilableException(responseAsString);
+        } catch (Exception e) {
             log.error(e.getMessage());
             throw new NoRouteAvilableException();
         }
+    }
+
+    public static String shortUrl(String longUrl) {
+        final String url = API_URL_SHORTIFY + longUrl;
+        Response response;
+        try {
+            response = doGet(url, API_HOST_SHORTIFY);
+            if (response.isSuccessful()) return response.body().string();
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+        return longUrl;
     }
 
     private static Response doGet(String url, String headerHost) throws IOException {

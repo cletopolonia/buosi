@@ -29,17 +29,24 @@ public class BuosiOrder {
 
     private static final String CAP_21040 = "21040";
 
+    public static final String CAP_21020 = "21020";
+
     static {
         capMap.put("castiglione olona", "21043");
         capMap.put("malnate", "21046");
         capMap.put("tradate", "21049");
         capMap.put("varese", "21100");
-        capMap.put("luvinate", "21020");
-        capMap.put("casciago", "21020");
+        capMap.put("uggiate trevano", "22029");
+        capMap.put("azzate", "210022");
+        capMap.put("luvinate", CAP_21020);
+        capMap.put("casciago", CAP_21020);
         capMap.put("lozza", CAP_21040);
         capMap.put("vedano olona", CAP_21040);
         capMap.put("venegono inferiore", CAP_21040);
         capMap.put("venegono superiore", CAP_21040);
+        capMap.put("inarzo", CAP_21020);
+        capMap.put("buguggiate", CAP_21020);
+        capMap.put("casale litta", CAP_21020);
     }
 
     public static BuosiOrder from(String[] attributes) {

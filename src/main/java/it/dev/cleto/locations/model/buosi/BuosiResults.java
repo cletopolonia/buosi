@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.StringJoiner;
 
+import static it.dev.cleto.locations.http.RapidApiClient.shortUrl;
 import static it.dev.cleto.locations.utils.BuosiUtils.*;
 
 @Data
@@ -42,7 +43,11 @@ public class BuosiResults {
 
         orders.sort(Comparator.comparingInt(BuosiOrder::getStopOrder));
 
-        this.route = sb2.toString();
+        this.route = getShortifyUrl(sb2.toString());
+    }
+
+    private String getShortifyUrl(String sb2) {
+        return shortUrl(encode(sb2)).split("\"")[1];
     }
 
 }

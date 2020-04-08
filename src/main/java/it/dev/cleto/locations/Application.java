@@ -18,15 +18,17 @@ import static it.dev.cleto.locations.http.RapidApiClient.invokeApiStopOrder;
 @Log4j
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoRouteAvilableException {
         Application application = new Application();
         for (int i = 1; i < 10; i++) {
             try {
                 application.calculateRoute(i);
-            } catch (Exception e) {
-                log.info(e.getMessage(), e);
-                System.exit(1);
+            } catch (NullPointerException e) {
+                log.info(e.getMessage());
+            } catch (SizeLimitExceededException | IOException | NoGeoCodingRouteAvilableException e) {
+                log.error(e.getMessage(), e);
             }
+            System.exit(1);
         }
     }
 
