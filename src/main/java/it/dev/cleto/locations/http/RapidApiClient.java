@@ -37,16 +37,12 @@ public class RapidApiClient {
         Response response;
         try {
             response = doGet(url, API_HOST_DIRECTION);
-            String responseAsString = null;
-            if (response.isSuccessful()) {
-                responseAsString = response.body().string();
-                DirectionsResponse directionsResponse = Jsonizable.fromJson(responseAsString, DirectionsResponse.class);
-                return directionsResponse.getRoute().getWaypoints_order();
-            }
-            else throw new NoRouteAvilableException(responseAsString);
+            String responseAsString = response.body().string();
+            DirectionsResponse directionsResponse = Jsonizable.fromJson(responseAsString, DirectionsResponse.class);
+            return directionsResponse.getRoute().getWaypoints_order();
         } catch (Exception e) {
             log.error(e.getMessage());
-            throw new NoRouteAvilableException();
+            throw new NoRouteAvilableException(e.getMessage());
         }
     }
 
