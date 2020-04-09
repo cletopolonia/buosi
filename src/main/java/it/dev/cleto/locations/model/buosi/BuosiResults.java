@@ -2,6 +2,7 @@ package it.dev.cleto.locations.model.buosi;
 
 import it.dev.cleto.locations.utils.BuosiUtils;
 import lombok.Data;
+import lombok.extern.log4j.Log4j;
 
 import javax.naming.SizeLimitExceededException;
 import java.util.Comparator;
@@ -12,6 +13,7 @@ import static it.dev.cleto.locations.http.RapidApiClient.shortUrl;
 import static it.dev.cleto.locations.utils.BuosiUtils.*;
 
 @Data
+@Log4j
 public class BuosiResults {
     private List<BuosiOrder> orders;
     private String route;
@@ -33,7 +35,9 @@ public class BuosiResults {
             sb2.append((orders.get(val).getPurgeAddress())).append(LOCATION_SEPARATOR);
         });
         orders.sort(Comparator.comparing(BuosiOrder::getId));
-        this.route = getShortifyUrl(sb2.toString());
+        final String longUrl = sb2.toString();
+        log.info(longUrl);
+        this.route = getShortifyUrl(longUrl);
     }
 
     private String getShortifyUrl(String sb2) {

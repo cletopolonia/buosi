@@ -63,8 +63,8 @@ public class RapidApiClient {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
-                .addHeader(X_RAPIDAPI_HOST, headerHost)
-                .addHeader(X_RAPIDAPI_KEY, API_KEY)
+                .addHeader(X_RAPID_API_HOST, headerHost)
+                .addHeader(X_RAPID_API_KEY, API_KEY)
                 .build();
         return client.newCall(request).execute();
     }
