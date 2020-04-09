@@ -20,6 +20,7 @@ public class BuosiUtils {
     public static final int LIMIT = 25;
     public static final String SPACE = " ";
     public static final String COMMA = ",";
+    public static final String DOUBLE_QUOTES = "\"";
     public static final String LOCATION_SEPARATOR = "/";
     public static final String URL_SEPARATOR = ";";
     public static final String CSV_SEPARATOR = ";";
