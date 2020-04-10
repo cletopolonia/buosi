@@ -20,7 +20,7 @@ public class Application {
 
     public static void main(String[] args) throws NoRouteAvilableException {
         Application application = new Application();
-        for (int i = 1; true; i++) {
+        for (int i = 1; i<3; i++) {
             try {
                 application.calculateRoute(i);
             } catch (NullPointerException e) {
@@ -28,8 +28,8 @@ public class Application {
             } catch (SizeLimitExceededException | IOException | NoGeoCodingRouteAvilableException e) {
                 log.error(e.getMessage(), e);
             }
-            System.exit(1);
         }
+        System.exit(1);
     }
 
     private void calculateRoute(int n) throws SizeLimitExceededException, NoGeoCodingRouteAvilableException, NoRouteAvilableException, IOException {
