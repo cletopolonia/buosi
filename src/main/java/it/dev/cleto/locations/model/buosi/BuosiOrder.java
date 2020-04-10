@@ -40,9 +40,11 @@ public class BuosiOrder {
         capMap.put("varese", "21100");
         capMap.put("uggiate trevano", "22029");
         capMap.put("appiano gentile", "22070");
+        capMap.put("bodio lomnago", CAP_21020);
         capMap.put("buguggiate", CAP_21020);
         capMap.put("casale litta", CAP_21020);
         capMap.put("casciago", CAP_21020);
+        capMap.put("daverio", CAP_21020);
         capMap.put("inarzo", CAP_21020);
         capMap.put("luvinate", CAP_21020);
         capMap.put("castronno", CAP_21040);

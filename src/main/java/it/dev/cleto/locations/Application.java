@@ -20,7 +20,7 @@ public class Application {
 
     public static void main(String[] args) throws NoRouteAvilableException {
         Application application = new Application();
-        for (int i = 1; i<3; i++) {
+        for (int i = 1; i<4; i++) {
             try {
                 application.calculateRoute(i);
             } catch (NullPointerException e) {
