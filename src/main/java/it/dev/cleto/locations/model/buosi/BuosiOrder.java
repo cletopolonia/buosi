@@ -71,22 +71,24 @@ public class BuosiOrder {
         buosiOrder.setAddress(attributes[3].trim().toLowerCase());
         final String city = attributes[4].trim().toLowerCase();
         buosiOrder.setCity(city);
-        buosiOrder.setCap(capMap.get(city));
-        buosiOrder.setProvFromCity(city);
+        buosiOrder.setCap(getCapFromCity(city));
+        buosiOrder.setProv(getProvFromCity(city));
         return buosiOrder;
     }
 
-    private void setProvFromCity(String city) {
+    private static String getCapFromCity(String city) {
+        return capMap.get(city);
+    }
+
+    private static String getProvFromCity(String city) {
         switch (city) {
             case "albiolo":
             case "appiano gentile":
             case "binago":
             case "uggiate trevano":
-                this.prov = "CO";
-                break;
+                return "CO";
             default:
-                this.prov = "VA";
-                break;
+                return "VA";
         }
     }
 
