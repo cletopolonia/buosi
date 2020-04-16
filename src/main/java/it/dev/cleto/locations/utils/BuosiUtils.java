@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 public class BuosiUtils {
     public static final int LIMIT = 25;
     public static final String SPACE = " ";
+    public static final String MINUS = "-";
+    public static final String UNDERSCORE = "_";
     public static final String COMMA = ",";
     public static final String DOUBLE_QUOTES = "\"";
     public static final String LOCATION_SEPARATOR = "/";
@@ -24,6 +26,13 @@ public class BuosiUtils {
     public static final String API_HOST_GEO_CODING = "trueway-geocoding.p.rapidapi.com";
     public static final String API_HOST_DIRECTION = "trueway-directions2.p.rapidapi.com";
     public static final String API_HOST_SHORTIFY = "shorturl-sfy-cx.p.rapidapi.com";
+    public static final String CAP_21020 = "21020";
+    public static final String CAP_21040 = "21040";
+    public static final String CAP_21049 = "21049";
+    public static final String CAP_21050 = "21050";
+    public static final String CAP_22070 = "22070";
+    public static final String PROV_VA = "VA";
+    public static final String PROV_CO = "CO";
 
     public static String encode(String value) {
         try {

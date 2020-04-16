@@ -1,0 +1,42 @@
+package it.dev.cleto.locations.utils;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import static it.dev.cleto.locations.utils.BuosiUtils.*;
+
+@AllArgsConstructor
+public enum CityCapProv {
+    AZZATE("210022", PROV_VA),
+    CASTIGLIONE_OLONA("21043", PROV_VA),
+    MALNATE("21046", PROV_VA),
+    INDUNO_OLONA("21056", PROV_VA),
+    VARESE("21100", PROV_VA),
+    BODIO_LOMNAGO(CAP_21020, PROV_VA),
+    BUGUGGIATE(CAP_21020, PROV_VA),
+    CASALE_LITTA(CAP_21020, PROV_VA),
+    CASCIAGO(CAP_21020, PROV_VA),
+    DAVERIO(CAP_21020, PROV_VA),
+    INARZO(CAP_21020, PROV_VA),
+    LUVINATE(CAP_21020, PROV_VA),
+    CASTRONNO(CAP_21040, PROV_VA),
+    GORNATE_OLONA(CAP_21040, PROV_VA),
+    LOZZA(CAP_21040, PROV_VA),
+    VEDANO_OLONA(CAP_21040, PROV_VA),
+    VENEGONO_INFERIORE(CAP_21040, PROV_VA),
+    VENEGONO_SUPERIORE(CAP_21040, PROV_VA),
+    ABBIATE_GUAZZONE(CAP_21049, PROV_VA),
+    TRADATE(CAP_21049, PROV_VA),
+    CAIRATE(CAP_21050, PROV_VA),
+    LONATE_CEPPINO(CAP_21050, PROV_VA),
+    UGGIATE_TREVANO("22029", PROV_CO),
+    ALBIOLO(CAP_22070, PROV_CO),
+    APPIANO_GENTILE(CAP_22070, PROV_CO),
+    BINAGO(CAP_22070, PROV_CO);
+
+    @Getter
+    private String cap;
+
+    @Getter
+    private String prov;
+}

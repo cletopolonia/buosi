@@ -1,15 +1,12 @@
 package it.dev.cleto.locations.model.buosi;
 
-import com.google.common.collect.Maps;
 import it.dev.cleto.locations.model.GeoLocation;
 import it.dev.cleto.locations.utils.BuosiUtils;
+import it.dev.cleto.locations.utils.CityCapProv;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
-
-import static it.dev.cleto.locations.utils.BuosiUtils.COMMA;
-import static it.dev.cleto.locations.utils.BuosiUtils.SPACE;
+import static it.dev.cleto.locations.utils.BuosiUtils.*;
 
 @Data
 @NoArgsConstructor
@@ -25,44 +22,6 @@ public class BuosiOrder {
     private GeoLocation location;
     private int stopOrder;
 
-    private static Map<String, String> capMap = Maps.newHashMap();
-
-    public static final String CAP_21020 = "21020";
-    private static final String CAP_21040 = "21040";
-    public static final String CAP_21049 = "21049";
-    private static final String CAP_21050 = "21050";
-    public static final String CAP_22070 = "22070";
-
-
-    static {
-        capMap.put("azzate", "210022");
-        capMap.put("castiglione olona", "21043");
-        capMap.put("malnate", "21046");
-        capMap.put("induno olona", "21056");
-        capMap.put("varese", "21100");
-        capMap.put("uggiate trevano", "22029");
-        capMap.put("bodio lomnago", CAP_21020);
-        capMap.put("buguggiate", CAP_21020);
-        capMap.put("casale litta", CAP_21020);
-        capMap.put("casciago", CAP_21020);
-        capMap.put("daverio", CAP_21020);
-        capMap.put("inarzo", CAP_21020);
-        capMap.put("luvinate", CAP_21020);
-        capMap.put("castronno", CAP_21040);
-        capMap.put("gornate-olona", CAP_21040);
-        capMap.put("lozza", CAP_21040);
-        capMap.put("vedano olona", CAP_21040);
-        capMap.put("venegono inferiore", CAP_21040);
-        capMap.put("venegono superiore", CAP_21040);
-        capMap.put("abbiate guazzone", CAP_21049);
-        capMap.put("tradate", CAP_21049);
-        capMap.put("cairate", CAP_21050);
-        capMap.put("lonate ceppino", CAP_21050);
-        capMap.put("albiolo", CAP_22070);
-        capMap.put("appiano gentile", CAP_22070);
-        capMap.put("binago", CAP_22070);
-    }
-
     public static BuosiOrder from(String[] attributes) {
         BuosiOrder buosiOrder = new BuosiOrder();
         buosiOrder.setId(attributes[0].trim());
@@ -76,20 +35,16 @@ public class BuosiOrder {
         return buosiOrder;
     }
 
-    private static String getCapFromCity(String city) {
-        return capMap.get(city);
+    protected static String getCapFromCity(String city) {
+        return CityCapProv.valueOf(purgeCity(city)).getCap();
     }
 
-    private static String getProvFromCity(String city) {
-        switch (city) {
-            case "albiolo":
-            case "appiano gentile":
-            case "binago":
-            case "uggiate trevano":
-                return "CO";
-            default:
-                return "VA";
-        }
+    protected static String getProvFromCity(String city) {
+        return CityCapProv.valueOf(purgeCity(city)).getProv();
+    }
+
+    protected static String purgeCity(String city) {
+        return city.toUpperCase().replace(SPACE, UNDERSCORE).replace(MINUS, UNDERSCORE);
     }
 
     public String getCompleteAddress() {
