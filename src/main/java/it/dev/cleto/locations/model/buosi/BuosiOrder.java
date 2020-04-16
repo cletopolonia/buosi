@@ -21,7 +21,7 @@ public class BuosiOrder {
     private String address;
     private String city;
     private String cap;
-    private String prov = "VA";
+    private String prov;
     private GeoLocation location;
     private int stopOrder;
 
@@ -31,6 +31,8 @@ public class BuosiOrder {
     private static final String CAP_21040 = "21040";
     public static final String CAP_21049 = "21049";
     private static final String CAP_21050 = "21050";
+    public static final String CAP_22070 = "22070";
+
 
     static {
         capMap.put("azzate", "210022");
@@ -39,7 +41,6 @@ public class BuosiOrder {
         capMap.put("induno olona", "21056");
         capMap.put("varese", "21100");
         capMap.put("uggiate trevano", "22029");
-        capMap.put("appiano gentile", "22070");
         capMap.put("bodio lomnago", CAP_21020);
         capMap.put("buguggiate", CAP_21020);
         capMap.put("casale litta", CAP_21020);
@@ -57,6 +58,9 @@ public class BuosiOrder {
         capMap.put("tradate", CAP_21049);
         capMap.put("cairate", CAP_21050);
         capMap.put("lonate ceppino", CAP_21050);
+        capMap.put("albiolo", CAP_22070);
+        capMap.put("appiano gentile", CAP_22070);
+        capMap.put("binago", CAP_22070);
     }
 
     public static BuosiOrder from(String[] attributes) {
@@ -68,7 +72,22 @@ public class BuosiOrder {
         final String city = attributes[4].trim().toLowerCase();
         buosiOrder.setCity(city);
         buosiOrder.setCap(capMap.get(city));
+        buosiOrder.setProvFromCity(city);
         return buosiOrder;
+    }
+
+    private void setProvFromCity(String city) {
+        switch (city) {
+            case "albiolo":
+            case "appiano gentile":
+            case "binago":
+            case "uggiate trevano":
+                this.prov = "CO";
+                break;
+            default:
+                this.prov = "VA";
+                break;
+        }
     }
 
     public String getCompleteAddress() {
