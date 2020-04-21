@@ -5,11 +5,13 @@ import it.dev.cleto.locations.utils.BuosiUtils;
 import it.dev.cleto.locations.utils.CityCapProv;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 import static it.dev.cleto.locations.utils.BuosiUtils.*;
 
 @Data
 @NoArgsConstructor
+@Log4j
 public class BuosiOrder {
 
     private String id;
@@ -23,6 +25,7 @@ public class BuosiOrder {
     private int stopOrder;
 
     public static BuosiOrder from(String[] attributes) {
+        log.info(attributes[0]);
         BuosiOrder buosiOrder = new BuosiOrder();
         buosiOrder.setId(attributes[0].trim());
         buosiOrder.setName(attributes[1].trim().toLowerCase());
