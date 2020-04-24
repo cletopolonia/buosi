@@ -35,7 +35,8 @@ public enum CityCapProv {
     UGGIATE_TREVANO("22029", PROV_CO),
     ALBIOLO(CAP_22070, PROV_CO),
     APPIANO_GENTILE(CAP_22070, PROV_CO),
-    BINAGO(CAP_22070, PROV_CO);
+    BINAGO(CAP_22070, PROV_CO),
+    CONCAGNO(CAP_22070, PROV_CO);
 
     @Getter
     private String cap;
