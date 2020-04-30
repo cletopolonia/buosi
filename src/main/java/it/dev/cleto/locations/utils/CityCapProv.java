@@ -7,8 +7,9 @@ import static it.dev.cleto.locations.utils.BuosiUtils.*;
 
 @AllArgsConstructor
 public enum CityCapProv {
-    AZZATE("210022", PROV_VA),
+    AZZATE("21022", PROV_VA),
     CASTIGLIONE_OLONA("21043", PROV_VA),
+    GAZZADA_SCHIANNO("21045", PROV_VA),
     MALNATE("21046", PROV_VA),
     INDUNO_OLONA("21056", PROV_VA),
     BARAGGIA("21059", PROV_VA),
@@ -31,7 +32,6 @@ public enum CityCapProv {
     CAIRATE(CAP_21050, PROV_VA),
     CLIVIO(CAP_21050, PROV_VA),
     LONATE_CEPPINO(CAP_21050, PROV_VA),
-
     UGGIATE_TREVANO("22029", PROV_CO),
     ALBIOLO(CAP_22070, PROV_CO),
     APPIANO_GENTILE(CAP_22070, PROV_CO),
