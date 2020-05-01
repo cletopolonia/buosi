@@ -30,12 +30,20 @@ public class BuosiOrder {
         buosiOrder.setId(attributes[0].trim());
         buosiOrder.setName(attributes[1].trim().toLowerCase());
         buosiOrder.setSurname(attributes[2].trim().toLowerCase());
-        buosiOrder.setAddress(attributes[3].trim().toLowerCase());
         final String city = attributes[4].trim().toLowerCase();
         buosiOrder.setCity(city);
         buosiOrder.setCap(getCapFromCity(city));
         buosiOrder.setProv(getProvFromCity(city));
+        buosiOrder.setAddress(getFixForAddressesUnknown(attributes[3].trim().toLowerCase(), buosiOrder.getCity()));
         return buosiOrder;
+    }
+
+    private static String getFixForAddressesUnknown(String address, String city) {
+        if ((city.contains("venegono") || city.contains("pianbosco")) && address.contains(" olmi"))
+            return "via dei ciclamini";
+        if (city.contains("tradate") && (address.contains("aquilino") || address.contains("bresolin")))
+            return "via bresolin";
+        return address;
     }
 
     protected static String getCapFromCity(String city) {
