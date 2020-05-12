@@ -1,0 +1,82 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        jQuery(function ($) {
+
+            function address(road, mylocation) {
+                this.road = road;
+                this.mylocation = mylocation;
+            }
+
+            var adresses = [new address("", ""), new address("via baracca 18", "venegono"), new address("piazza XX", "varese"), new address("", "")];
+
+            $(".box-mum").change(function () {
+                    let optionChoice = $(this).children(":selected");
+                    $(".mum-choice input").val(optionChoice.val());
+                    var id = optionChoice.attr("id");
+                    var temp = adresses[id];
+                    $(".mum-delivery-address").text(temp.road);
+                    var tempmylocation = temp.mylocation;
+                    if (tempmylocation === "venegono")
+                        $('.mum-delivery-city option[value="venegono"]').prop('selected', true);
+                    else if (tempmylocation === "varese")
+                        $('.mum-delivery-city option[value="varese"]').prop('selected', true);
+                    else {
+                        $('.mum-delivery-city option[value="varese"]').prop('selected', false);
+                        $('.mum-delivery-city option[value="venegono"]').prop('selected', false);
+                        $('.mum-delivery-city option[value=""]').prop('selected', true);
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+<div class="b-label t-center">
+    ORDINA LA TUA TORTA
+</div>
+<div class="b-label">
+    Scegli la tua torta tra quelle disponibili:
+    <!--[select box-mum class:mine-select class:mine-col-3 use_label_element "" "1|negozio venegono" "2|negozio varese" "3|a
+    casa tua" ]-->
+    <div>
+        <select class="box-mum">
+            <option id="0"></option>
+            <option id="1">negozio venegono</option>
+            <option id="2">negozio varese</option>
+            <option id="3">a domicilio</option>
+        </select>
+    </div>
+
+    <span class="wpcf7-form-control-wrap mum-choice">
+        <input type="text" name="mum-choice" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+    </span>
+</div>
+
+<div>
+    <div class="b-label">
+        Indirizzo di consegna<br/>
+    </div>
+    <div class="ml-30">
+        <div class="sub-label">
+            Via e numero civico *
+        </div>
+        <!--
+                [text* mum-delivery-address]
+        -->
+        <div class="mum-delivery-address">nessuna via</div>
+        <div class="sub-label">
+            Città *
+        </div>
+        <!--        [select* mum-delivery-city class:mine-select include_blank "Castiglione Olona" "Malnate" "Tradate" "Varese"
+                "Vedano Olona" "Venegono Inferiore" "Venegono Superiore"]-->
+        <select class="mum-delivery-city">
+            <option value="0"></option>
+            <option value="1">Castiglione Olona</option>
+            <option value="varese">Varese</option>
+            <option value="venegono">Venegono superiore</option>
+        </select>
+    </div>
+</div>
+</body>
+</html>

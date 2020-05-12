@@ -1,0 +1,133 @@
+<script>
+    jQuery(function ($) {
+        function address(road, mylocation) {
+            this.road = road;
+            this.mylocation = mylocation;
+        }
+        var adresses = [new address("", ""), new address("piazza Cesare Beccaria 6", "varese"), new address("via Baracca 18", "venegono"), new address("", "")];
+        $(".box-ncake").change(function () {
+            let optionChoice = $(this).children(":selected");
+            $(".ncake-choice input").val(optionChoice.val());
+            var id = optionChoice.attr("id");
+            var temp = adresses[id];
+            $(".ncake-address input").val(temp.road);
+            var tempmylocation = temp.mylocation;
+            if (tempmylocation === "venegono") {
+                $('.ncake-city option[value="Venegono Superiore"]').prop('selected', true);
+                $(".ncake-ring input").val("Pasticceria Buosi");
+                $('.address-section').hide();
+            } else if (tempmylocation === "varese") {
+                $('.ncake-city option[value="Varese"]').prop('selected', true);
+                $(".ncake-ring input").val("Pasticceria Buosi");
+                $('.address-section').hide();
+            } else {
+                $('.ncake-city option[value="Varese"]').prop('selected', false);
+                $('.ncake-city option[value="Venegono Superiore"]').prop('selected', false);
+                $('.ncake-city option[value=""]').prop('selected', true);
+                $(".ncake-ring input").val("");
+                $('.address-section').show();
+            }
+        });
+    });
+</script>
+
+
+<div class="b-label t-center">
+    ORDINA IL  TUO DOLCE
+</div>
+<div>
+    <div class="b-label">
+        Seleziona il vassoio di pasticcini che desideri:
+    </div>
+    <div class="ml-30 products">
+        <div class="mt-20 ">
+            [select box-npastry-small class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+            Vassoio piccolo (21 pezzi assortiti)
+        </div>
+        <div class="mt-20">
+            [select box-npastry-big class:mine-col-3  class:mine-select use_label_element "0" "1" "2" "3" "4" "5"]
+            Vassoio grande (32 pezzi assortiti)
+        </div>
+    </div>
+
+    <div class="b-label">
+        Scegli la tipologia di torta:
+    </div>
+    <div class="ml-30">
+        [checkbox* box-ncake class:mine-box use_label_element ""  "Millefoglie (4 persone)" "Millefoglie (6 persone)" "Millefoglie (8-10 persone)" "Caprese al cioccolato senza glutine (4 persone)" "Caprese al cioccolato senza glutine (6 persone)" "Tris di cioccolati (4 persone)" "Tris di cioccolati (6 persone)" "Tris di cioccolati (8-10 persone)" "Sacher (4 persone)"  "Sacher (6 persone)"  "Sacher (8-10 persone)" "Mousse al cioccolato bianco con cremoso allo Yuzu e croccante al sesamo (4 persone)" "Mousse al cioccolato bianco con cremoso allo Yuzu e croccante al sesamo (6 persone)" "Cheesecake con fragole (4 persone)" "Cheesecake con fragole (6 persone)" "Cheesecake con fragole (8-10 persone)" "Meringata ai Marron Glacè (4 persone)" "Meringata ai Marron Glacè (6 persone)" "Meringata ai Marron Glacè (8-10 persone)" "Crema cotta al cioccolato (4 persone)"  "Crema cotta al cioccolato (6 persone)"  "Oblò al cioccolato (6 persone)" "Crostata di frutta (4 persone)"  "Crostata di frutta (6 persone)" "Crostata di frutta (8-10 persone)"  "Bavarese (4 persone)"  "Bavarese (6 persone)" "Bavarese (8-10 persone)" "Mandorlata (4 persone)"  "Mandorlata (6 persone)" "Mandorlata (8-10 persone)" "Ricotta e Lamponi (4 persone)" "Ricotta e Lamponi (6 persone)" "Brownie al cioccolato con pere e zenzero candito (6 persone)"]
+    </div>
+    <div class="b-label">
+        Se vuoi personalizzare la tua torta con una scritta aggiungila qui di seguito</div>
+    [text ncake-notes /50]
+
+
+    <div class="b-label">
+        Data di consegna *
+    </div>
+    [select* ncake-date class:mine-select include_blank  "05/05/2020" "06/05/2020" "07/05/2020" "08/05/2020"]
+
+</div>
+
+<div>
+    <div class="b-label">
+        Scegli come vuoi ricevere il tuo dolce: *
+    </div>
+    <select class="box-ncake mine-select">
+        <option id="0"></option>
+        <option id="1">ASPORTO: Pasticceria Buosi di Varese</option>
+        <option id="2">ASPORTO: Pasticceria Buosi di Venegono Superiore</option>
+        <option id="3">CONSEGNA A DOMICILIO</option>
+    </select>
+    [text* ncake-choice class:hide-cake]
+</div>
+<div>
+    <div class="b-label">
+        Nome *
+    </div>
+    [text* ncake-name]
+</div>
+
+<div>
+    <div class="b-label">
+        Cognome *
+    </div>
+    [text* ncake-surname]
+</div>
+
+<div>
+    <div class="b-label">
+        Email *
+    </div>
+    [email* ncake-email]
+</div>
+
+<div>
+    <div class="b-label">
+        Cellulare *
+    </div>
+    [tel* ncake-mobile]
+</div>
+
+<div class="address-section">
+    <div class="b-label">
+        Indirizzo di consegna<br/>
+    </div>
+    <div class="ml-30">
+        <div class="sub-label">
+            Via e numero civico *
+        </div>
+        [text* ncake-address]
+        <div class="sub-label">
+            Città *
+        </div>
+        [select* ncake-city class:mine-select include_blank "Castiglione Olona" "Malnate" "Tradate" "Varese" "Vedano Olona" "Venegono Inferiore" "Venegono Superiore" "Lonate Ceppino" "Binago"]
+        <div class="sub-label">
+            Nominativo sul citofono *
+        </div>
+        [text* ncake-ring]
+    </div>
+</div>
+<p class="mt-30">
+    [acceptance ncake-accept]&nbsp;Ho letto e acconsento al <a href="http://www.buosi.it/contatti/privacy-policy/" target="_blank">trattamento dei dati personali *</a>
+</p>
+<p>[submit "Invia"]</p>

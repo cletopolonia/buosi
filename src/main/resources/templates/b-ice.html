@@ -1,0 +1,90 @@
+<script>
+    jQuery(function ($) {
+        var h = 10;
+        var now = new Date();
+        now.setHours(now.getHours()+h);
+        var day = ('0' + (now.getDate() + 1)).slice(-2);
+        var month = ('0' + (now.getMonth() + 1)).slice(-2);
+        var tomorrow = now.getFullYear()+'-'+(month)+'-'+(day);
+        $('#datePicker').val(tomorrow);
+        $('#datePicker').attr('min', tomorrow);
+        console.log(tomorrow);
+    });
+</script>
+
+<div class="b-label t-center">
+    ORDINA LA TUA VASCHETTA DI GELATO
+</div>
+<div class="b-label">
+    Scegli la tua vaschetta di gelato tra quelle disponibili:
+</div>
+<div class="ml-30 products">
+    [select box-ice-0 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+    Nocciola Piemonte IGP e Pistacchio riserva Feudo San Biagio Sicilia
+    [select box-ice-1 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+    Crema alla Vaniglia Bourbon del Madagascar e cioccolato fondente selezione Buosi
+    [select box-ice-2 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+    Limone della Costiera Amalfitana e Fragola Candonga Basilicata
+    [select box-ice-3 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+    Sacher Buosi e fior di latte Varese
+    [select box-ice-4 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+    Ananas Del Monte via Aerea e Banane della Costa Rica
+</div>
+<div>
+    <div class="b-label">
+        Data di consegna *
+    </div>
+    [date* ice-date id:datePicker min:2020-04-07 max:2020-04-10]
+</div>
+
+<div>
+    <div class="b-label">
+        Nome *
+    </div>
+    [text* ice-name]
+</div>
+
+<div>
+    <div class="b-label">
+        Cognome *
+    </div>
+    [text* ice-surname]
+</div>
+
+<div>
+    <div class="b-label">
+        Email *
+    </div>
+    [email* ice-email]
+</div>
+
+<div>
+    <div class="b-label">
+        Cellulare *
+    </div>
+    [tel* ice-mobile]
+</div>
+
+<div>
+    <div class="b-label">
+        Indirizzo di consegna<br/>
+    </div>
+    <div class="ml-30">
+        <div class="sub-label">
+            Via e numero civico *
+        </div>
+        [text* ice-delivery-address]
+        <div class="sub-label">
+            Città *
+        </div>
+        [select* ice-delivery-city class:mine-select include_blank "Castiglione Olona" "Malnate" "Tradate" "Varese" "Vedano Olona" "Venegono Inferiore" "Venegono Superiore"]
+        <div class="sub-label">
+            Nominativo sul citofono *
+        </div>
+        [text* ice-ring]
+    </div>
+</div>
+<p class="mt-30">
+    [acceptance ice-accept]&nbsp;Ho letto e acconsento al <a href="http://www.buosi.it/contatti/privacy-policy/" target="_blank">trattamento dei dati personali *</a>
+</p>
+<p>[submit "Invia"]</p>

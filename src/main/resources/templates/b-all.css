@@ -1,0 +1,101 @@
+.ml-30 {
+    margin-left: 30px;
+    width: 80%;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.b-label {
+    margin-top: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.sub-label {
+    color: gray;
+    font-weight: bold;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.box-note {
+    font-style: italic;
+}
+
+/* to hide first element of select*/
+
+span.first {
+    display: none;
+}
+
+.mine-box label span {
+    position: relative;
+    top: 3px;
+}
+
+select.mine-select {
+    height: 40px;
+    width: auto;
+}
+
+.products span.wpcf7-form-control-wrap {
+    display: initial;
+}
+
+.row-sel {
+    margin: 15px 10px;
+}
+
+.separator {
+    border-top: 3px solid #bbb;
+}
+
+
+/* to align checkbox accept*/
+span.cake-accept {
+    display: initial;
+}
+
+span.week-accept {
+    display: initial;
+}
+
+span.easter-accept {
+    display: initial;
+}
+
+span.ice-accept {
+    display: initial;
+}
+
+span.mum-accept {
+    display: initial;
+}
+
+span.ncake-accept {
+    display: initial;
+}
+
+span.iceTa-accept {
+    display: initial;
+}
+
+/* choice */
+
+span.mum-choice {
+    display: none;
+}
+
+span.ncake-choice {
+    display: none;
+}
+
+span.iceTa-choice {
+    display: none;
+}

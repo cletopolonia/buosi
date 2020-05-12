@@ -1,0 +1,83 @@
+<script>
+    jQuery(function ($) {
+        var h = 10;
+        var now = new Date();
+        now.setHours(now.getHours()+h);
+        var day = ('0' + (now.getDate() + 1)).slice(-2);
+        var month = ('0' + (now.getMonth() + 1)).slice(-2);
+        var tomorrow = now.getFullYear()+'-'+(month)+'-'+(day);
+        $('#datePicker').val(tomorrow);
+        $('#datePicker').attr('min', tomorrow);
+        console.log(tomorrow);
+    });
+</script>
+
+<div class="b-label t-center">
+    ORDINA LA TUA TORTA
+</div>
+<div class="b-label">
+    Scegli la tua torta tra quelle disponibili:
+</div>
+<div class="ml-30">
+    [checkbox box-cakes class:mine-box use_label_element "" "Millefoglie (4 persone)" "Millefoglie (6 persone)" "Crostata di frutta fresca (4 persone)" "Crostata di frutta fresca (6 persone)" "Sacher (6 persone)" "Bavarese (6 persone)"]
+    <div class="mt-20">Se vuoi personalizzare la tua torta con una scritta aggiungila qui di seguito</div>
+    [text cake-notes /50]
+</div>
+<div>
+    <div class="b-label">
+        Data di consegna *
+    </div>
+    [date* cake-date id:datePicker max:2020-04-06]
+</div>
+
+<div>
+    <div class="b-label">
+        Nome *
+    </div>
+    [text* cake-name]
+</div>
+
+<div>
+    <div class="b-label">
+        Cognome *
+    </div>
+    [text* cake-surname]
+</div>
+
+<div>
+    <div class="b-label">
+        Email *
+    </div>
+    [email* cake-email]
+</div>
+
+<div>
+    <div class="b-label">
+        Cellulare *
+    </div>
+    [tel* cake-mobile]
+</div>
+
+<div>
+    <div class="b-label">
+        Indirizzo di consegna<br/>
+    </div>
+    <div class="ml-30">
+        <div class="sub-label">
+            Via e numero civico *
+        </div>
+        [text* cake-delivery-address]
+        <div class="sub-label">
+            Città *
+        </div>
+        [select* cake-delivery-city class:mine-select include_blank "Castiglione Olona" "Malnate" "Tradate" "Varese" "Vedano Olona" "Venegono Inferiore" "Venegono Superiore"]
+        <div class="sub-label">
+            Nominativo sul citofono *
+        </div>
+        [text* cake-ring]
+    </div>
+</div>
+<p class="mt-30">
+    [acceptance cake-accept]&nbsp;Ho letto e acconsento al <a href="http://www.buosi.it/contatti/privacy-policy/" target="_blank">trattamento dei dati personali *</a>
+</p>
+<p>[submit "Invia"]</p>

@@ -1,0 +1,111 @@
+<script>
+    jQuery(function ($) {
+        function address(road, mylocation) {
+            this.road = road;
+            this.mylocation = mylocation;
+        }
+        var adresses = [new address("", ""), new address("piazza Cesare Beccaria 6", "varese"), new address("via Baracca 18", "venegono"), new address("", "")];
+        $(".box-mum").change(function () {
+            let optionChoice = $(this).children(":selected");
+            $(".mum-choice input").val(optionChoice.val());
+            var id = optionChoice.attr("id");
+            var temp = adresses[id];
+            $(".mum-address input").val(temp.road);
+            var tempmylocation = temp.mylocation;
+            if (tempmylocation === "venegono") {
+                $('.mum-city option[value="Venegono Superiore"]').prop('selected', true);
+                $(".mum-ring input").val("Negozio");
+                $('.address-section').hide();
+            } else if (tempmylocation === "varese") {
+                $('.mum-city option[value="Varese"]').prop('selected', true);
+                $(".mum-ring input").val("Negozio");
+                $('.address-section').hide();
+            } else {
+                $('.mum-city option[value="Varese"]').prop('selected', false);
+                $('.mum-city option[value="Venegono Superiore"]').prop('selected', false);
+                $('.mum-city option[value=""]').prop('selected', true);
+                $('.address-section').show();
+            }
+        });
+    });
+</script>
+
+<div class="b-label t-center">
+    ORDINA IL DOLCE PER LA TUA MAMMA
+    <div class="b-label">
+        Scegli la tipologia di torta: *
+    </div>
+    <div class="ml-30">
+        [checkbox* box-mumcakes class:mine-box use_label_element "" "Red Mimosa (misura: piccola)" "Red Mimosa (misura: media)" "Red Mimosa
+        (misura: grande)" "Tris di cioccolati (misura: piccola)" "Tris di cioccolati (misura: media)" "Tris di cioccolati (misura: grande)" "Bavarese alla
+        vaniglia con frutti rossi (misura: piccola)" "Bavarese alla vaniglia con frutti rossi (misura: media)" "Bavarese alla vaniglia con
+        frutti rossi (misura: grande)""Crostata di frutta (misura: piccola)" "Crostata di frutta (misura: media)" "Crostata di frutta (misura: grande)"]
+    </div>
+    <div class="b-label"> Se vuoi personalizzare la tua torta con una scritta aggiungila qui di seguito:</div>
+    [text mum-notes /100]
+</div>
+<div>
+    <div class="b-label">
+        Scegli come vuoi ricevere la tua torta: *
+    </div>
+    <select class="box-mum mine-select">
+        <option id="0"></option>
+        <option id="1">RITIRO: Negozio Buosi di Varese</option>
+        <option id="2">RITIRO: Negozio Buosi di Venegono Superiore</option>
+        <option id="3">CONSEGNA A DOMICILIO</option>
+    </select>
+    [text* mum-choice]
+</div>
+<div>
+    <div class="b-label">
+        Nome *
+    </div>
+    [text* mum-name]
+</div>
+
+<div>
+    <div class="b-label">
+        Cognome *
+    </div>
+    [text* mum-surname]
+</div>
+
+<div>
+    <div class="b-label">
+        Email *
+    </div>
+    [email* mum-email]
+</div>
+
+<div>
+    <div class="b-label">
+        Cellulare *
+    </div>
+    [tel* mum-mobile]
+</div>
+
+<div class="address-section">
+    <div class="b-label">
+        Indirizzo di consegna<br/>
+    </div>
+    <div class="ml-30">
+        <div class="sub-label">
+            Via e numero civico *
+        </div>
+        [text* mum-address]
+        <div class="sub-label">
+            Città *
+        </div>
+        [select* mum-city class:mine-select include_blank "Castiglione Olona" "Malnate" "Tradate" "Varese" "Vedano
+        Olona" "Venegono Inferiore" "Venegono Superiore" "Lonate Ceppino" "Binago"]
+        <div class="sub-label">
+            Nominativo sul citofono *
+        </div>
+        [text* mum-ring]
+    </div>
+</div>
+<p class="mt-30">
+    [acceptance mum-accept]&nbsp;Ho letto e acconsento al <a href="http://www.buosi.it/contatti/privacy-policy/"
+                                                             target="_blank">trattamento dei dati personali *</a>
+</p>
+<p>[submit "Invia"]</p>

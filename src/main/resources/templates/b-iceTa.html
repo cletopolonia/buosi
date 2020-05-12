@@ -1,0 +1,152 @@
+<script>
+    jQuery(function ($) {
+        function address(road, mylocation) {
+            this.road = road;
+            this.mylocation = mylocation;
+        }
+        var adresses = [new address("", "")
+            , new address("piazza Cesare Beccaria 6", "varese")
+            , new address("via Baracca 18", "venegono")
+            , new address("", "")
+        ];
+        $(".box-iceTa").change(function () {
+            let optionChoice = $(this).children(":selected");
+            $(".iceTa-choice input").val(optionChoice.val());
+            var id = optionChoice.attr("id");
+            var temp = adresses[id];
+            $(".iceTa-address input").val(temp.road);
+            var tempmylocation = temp.mylocation;
+            if (tempmylocation === "venegono") {
+                $('.iceTa-city option[value="Venegono Superiore"]').prop('selected', true);
+                $(".iceTa-ring input").val("Pasticceria Buosi");
+                $('.address-section').hide();
+            } else if (tempmylocation === "varese") {
+                $('.iceTa-city option[value="Varese"]').prop('selected', true);
+                $(".iceTa-ring input").val("Pasticceria Buosi");
+                $('.address-section').hide();
+            } else {
+                $('.iceTa-city option[value="Varese"]').prop('selected', false);
+                $('.iceTa-city option[value="Venegono Superiore"]').prop('selected', false);
+                $('.iceTa-city option[value=""]').prop('selected', true);
+                $(".iceTa-ring input").val("");
+                $('.address-section').show();
+            }
+        });
+    });
+</script>
+
+
+<div class="b-label t-center">
+    ORDINA IL TUO GELATO
+</div>
+<div>
+    <div class="b-label">
+        Seleziona il vassoio di pasticcini che desideri:
+    </div>
+    <div class="ml-30 products">
+        [select box-iceTa-0 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Nocciola Piemonte IGP e Pistacchio riserva Feudo San Biagio Sicilia
+
+        [select box-iceTa-1 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Crema alla Vaniglia Bourbon del Madagascar e cioccolato fondente selezione Buosi
+
+        [select box-iceTa-2 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Limone della Costiera Amalfitana e Fragola Candonga Basilicata
+
+        [select box-iceTa-3 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Sacher Buosi e fior di latte Varese
+
+        [select box-iceTa-4 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Mango, Ananas Del Monte via Aerea e Banane della Costa Rica
+
+        [select box-iceTa-5 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Tiramisù (gelato al mascarpone con savoiardi e bagna al caffè) e Millefoglie (gelato alla crema con frammenti di sfoglia croccante)
+
+        [select box-iceTa-6 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Cioccolato bianco e Pralinato al Pistacchio  <strong>NOVITÀ </strong>
+
+        [select box-iceTa-7 class:mine-select class:mine-col-3 use_label_element "0" "1" "2" "3" "4" "5"]
+        Cioccolato fondente Venezuela 72% e Cioccolato al caramello  <strong>NOVITÀ </strong>
+    </div>
+
+    <div class="b-label">
+        Scegli la tipologia di altro:
+    </div>
+    <div class="ml-30">
+        [checkbox* box-iceTa-cb class:mine-box use_label_element ""  "Millefoglie (4 persone)" "Millefoglie (6 persone)" ]
+    </div>
+    <div class="b-label">
+        Se vuoi personalizzare la tua torta con una scritta aggiungila qui di seguito</div>
+        [text iceTa-notes /50]
+
+
+    <div class="b-label">
+        Data di consegna *
+    </div>
+    [select* iceTa-date class:mine-select include_blank  "05/05/2020" "06/05/2020" "07/05/2020" "08/05/2020"]
+
+</div>
+
+<div>
+    <div class="b-label">
+        Scegli come vuoi ricevere il tuo gelato: *
+    </div>
+    <select class="box-iceTa mine-select">
+        <option id="0"></option>
+        <option id="1">ASPORTO: Pasticceria Buosi di Varese</option>
+        <option id="2">ASPORTO: Pasticceria Buosi di Venegono Superiore</option>
+        <option id="3">CONSEGNA A DOMICILIO</option>
+    </select>
+    [text* iceTa-choice class:hide-cake]
+</div>
+<div>
+    <div class="b-label">
+        Nome *
+    </div>
+    [text* iceTa-name]
+</div>
+
+<div>
+    <div class="b-label">
+        Cognome *
+    </div>
+    [text* iceTa-surname]
+</div>
+
+<div>
+    <div class="b-label">
+        Email *
+    </div>
+    [email* iceTa-email]
+</div>
+
+<div>
+    <div class="b-label">
+        Cellulare *
+    </div>
+    [tel* iceTa-mobile]
+</div>
+
+<div class="address-section">
+    <div class="b-label">
+        Indirizzo di consegna<br/>
+    </div>
+    <div class="ml-30">
+        <div class="sub-label">
+            Via e numero civico *
+        </div>
+        [text* iceTa-address]
+        <div class="sub-label">
+            Città *
+        </div>
+        [select* iceTa-city class:mine-select include_blank "Castiglione Olona" "Malnate" "Tradate" "Varese" "Vedano Olona" "Venegono Inferiore" "Venegono Superiore" "Lonate Ceppino" "Binago"]
+        <div class="sub-label">
+            Nominativo sul citofono *
+        </div>
+        [text* iceTa-ring]
+    </div>
+</div>
+<p class="mt-30">
+    [acceptance iceTa-accept]&nbsp;Ho letto e acconsento al <a href="http://www.buosi.it/contatti/privacy-policy/" target="_blank">trattamento dei dati personali *</a>
+</p>
+<p>[submit "Invia"]</p>
